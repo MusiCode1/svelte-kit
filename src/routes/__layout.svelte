@@ -20,7 +20,7 @@
 
 <Styles />
 
-<Container>
+<Container class="text-center">
 	<Navbar color="dark" dark expand="md">
 		<NavbarBrand href="/">Magen</NavbarBrand>
 

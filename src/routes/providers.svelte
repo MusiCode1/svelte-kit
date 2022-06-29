@@ -82,6 +82,8 @@
 	];
 </script>
 
+<h1 class="my-4">Providers</h1>
+
 <Row>
 	{#each list_provider as provider}
 		<Col sm="6" md="4" lg="3" xl="2" class="mb-4">
