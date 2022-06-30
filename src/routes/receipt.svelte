@@ -1,1 +1,1 @@
-<p>test</p>
+<h1 class="my-4">Receipt</h1>
