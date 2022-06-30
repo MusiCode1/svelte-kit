@@ -9,10 +9,18 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+
 		vite: {
 			ssr: {
 				noExternal: ['@popperjs/core']
+			},
+			server: {
+				port: 3050
 			}
+		},
+
+		methodOverride: {
+			allowed: ['PATCH', 'DELETE', 'PUT']
 		}
 	}
 };
