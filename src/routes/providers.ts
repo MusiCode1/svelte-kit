@@ -1,3 +1,4 @@
+import type { RequestHandlerOutput } from "@sveltejs/kit";
 import type { RequestHandler } from "./__types/providers";
 
 type Provider = {
@@ -55,7 +56,7 @@ let providers: Provider[] = [
 
 ];
 
-const redirect = {
+const redirect: RequestHandlerOutput = {
     status: 303,
     headers: {
         location: '/providers'
@@ -84,9 +85,7 @@ export const post: RequestHandler = async ({ request }) => {
         address: String(form.get("address"))
     };
 
-    return {
-        status: 200
-    };
+    return redirect;
 
 };
 
@@ -107,9 +106,10 @@ export const del: RequestHandler = async ({ request }) => {
 
     delete providers[id];
 
-    return {
-        status: 200
-    }
+    console.log(providers);
+
+
+    return redirect;
 
 };
 
@@ -123,8 +123,6 @@ export const put: RequestHandler = async ({ request }) => {
         address: String(form.get("address"))
     });
 
-    return {
-
-    }
+    return redirect;
 
 };

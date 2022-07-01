@@ -45,7 +45,13 @@
 	};
 
 	const on_open_create_from = () => {
-		form.id = providers.length + 1;
+		form = {
+			id: 0,
+			name: '',
+			address: ''
+		};
+
+		form.id = providers.length;
 		toggle.create();
 	};
 
@@ -54,7 +60,7 @@
 
 <h1 class="my-4">Providers</h1>
 
-<Button color="light" class="mb-4 shadow" on:click={on_open_create_from}>➕</Button>
+<Button color="light" class="mb-4 button-shadow" on:click={on_open_create_from}>➕</Button>
 
 <Row>
 	{#each providers as provider}
@@ -74,14 +80,14 @@
 						</CardText>
 						<Row>
 							<Col>
-								<Button class="shadow" on:click={() => on_edit_form(provider)} color="light"
+								<Button class="button-shadow" on:click={() => on_edit_form(provider)} color="light"
 									>✏️</Button
 								>
 							</Col>
 							<Col>
 								<form action="/providers?_method=DELETE" method="POST" use:enhance>
 									<input name="id" type="hidden" value={provider.id} />
-									<Button class="shadow" color="light" type="submit">🗑️</Button>
+									<Button class="button-shadow" color="light" type="submit">🗑️</Button>
 								</form>
 							</Col>
 						</Row>
@@ -143,7 +149,10 @@
 </Modal>
 
 <style>
-	.shadow {
-		box-shadow: inset 0px 0px 5px 0px;
+	:global(.card) {
+		box-shadow: 0px 0px 10px 0px;
+	}
+	:global(.button-shadow) {
+		box-shadow: 0px 0px 5px 0px;
 	}
 </style>
