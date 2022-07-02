@@ -1,60 +1,6 @@
 import type { RequestHandlerOutput } from "@sveltejs/kit";
 import type { RequestHandler } from "./__types/providers";
-
-type Provider = {
-    id: number;
-    name: string;
-    address: string;
-};
-
-let providers: Provider[] = [
-    {
-        id: 0,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 1,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 2,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 3,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 4,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 5,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 6,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 7,
-        name: 'Some provider',
-        address: 'Address'
-    },
-    {
-        id: 8,
-        name: 'Some provider',
-        address: 'Address'
-    }
-
-];
+import { provider } from "$lib/db";
 
 const redirect: RequestHandlerOutput = {
     status: 303,
@@ -67,62 +13,47 @@ export const get: RequestHandler = async () => {
 
     return {
         body: {
-            providers
+            providers: provider.read()
         }
     }
-
 };
 
 export const post: RequestHandler = async ({ request }) => {
 
     const form = await request.formData();
 
-    const id = Number(form.get("id"));
-
-    providers[id] = {
-        id: Number(form.get("id")),
-        name: String(form.get("name")),
-        address: String(form.get("address"))
-    };
-
-    return redirect;
-
-};
-
-export const del: RequestHandler = async ({ request }) => {
-
-    const form = await request.formData();
-
-    const id = Number(form.get("id"));
-
-    /*     providers = providers.filter((v) => {
-    
-            if (v.id === id) {
-                return false
-            }
-            return true
-    
-        }); */
-
-    delete providers[id];
-
-    console.log(providers);
-
-
-    return redirect;
-
-};
-
-export const put: RequestHandler = async ({ request }) => {
-
-    const form = await request.formData();
-
-    providers.push({
+    provider.update({
         id: Number(form.get("id")),
         name: String(form.get("name")),
         address: String(form.get("address"))
     });
 
     return redirect;
+};
 
+export const del: RequestHandler = async ({ request }) => {
+
+    const form = await request.formData();
+
+
+    provider.delete({
+        id: Number(form.get("id")),
+        name: String(form.get("name")),
+        address: String(form.get("address"))
+    });
+
+    return redirect;
+};
+
+export const put: RequestHandler = async ({ request }) => {
+
+    const form = await request.formData();
+
+    provider.create({
+        id: Number(form.get("id")),
+        name: String(form.get("name")),
+        address: String(form.get("address"))
+    });
+
+    return redirect;
 };

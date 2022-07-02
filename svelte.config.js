@@ -16,7 +16,7 @@ const config = {
 				noExternal: ['@popperjs/core']
 			},
 			server: {
-				port: 3050
+				strictPort: false 
 			}
 		},
 

@@ -151,7 +151,20 @@
 <style>
 	:global(.card) {
 		box-shadow: 0px 0px 10px 0px;
+		animation-name: example;
+		animation-duration: 1s;
 	}
+
+	@keyframes example {
+		from {
+			top: 600px;
+		}
+		to {
+			top: 0;
+			left: 0;
+		}
+	}
+
 	:global(.button-shadow) {
 		box-shadow: 0px 0px 5px 0px;
 	}
