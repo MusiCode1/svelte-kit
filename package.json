@@ -1,6 +1,7 @@
 {
 	"name": "svelte-light",
 	"version": "0.0.1",
+	"description": "ניהול ספקים וחשבוניות.\nלצפייה בפרוייקט ב-StackBlitz: https://stackblitz.com/edit/github-eyrb2c",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
