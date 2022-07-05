@@ -58,7 +58,7 @@
 	export let providers: Provider[];
 </script>
 
-<h1 class="my-4">Providers</h1>
+<h1 class="my-4">ספקים</h1>
 
 <Button color="light" class="mb-4 button-shadow" on:click={on_open_create_from}>➕</Button>
 
